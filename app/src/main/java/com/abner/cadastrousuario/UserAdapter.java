@@ -1,37 +1,28 @@
 package com.abner.cadastrousuario;
 
+import android.view.ViewGroup;
 
-//Bloco de Importações
-import android.os.Bundle;
-import android.widget.Button;
+import androidx.recyclerview.widget.RecyclerView;
 
-import androidx.appcompat.app.AppCompatActivity;
+import org.jetbrains.annotations.NotNull;
 
-import com.google.android.material.textfield.TextInputEditText
+import java.util.List;
 
-//Classe principal
-public class UserAdapter extends AppCompatActivity {
-    TextInputEditText editNome, editEmail;
-    Button btnSalvar;
+//Classe Adapter: Gerencia a criação e o preenchimento dos itens na RecycleView
+public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
 
-    //Vincula Variavel com elemento da interface grafica, escrito no arquivo xml
+    //Atributo privado que armazena a referencia dos dados que serao exibidos
+    private List<String> ListaUsuarios;
+
+    //Construtor que permite que a MainActivity "entregue" a lista de dados para este  Adapter
+    public UserAdapter(List<String> lista){
+        this.ListaUsuarios = lista;
+    }
+
+    //Metodo 1: Cria "do zero" o visual de uma linha da lista (+ViewMoldel)
+    @NotNull
     @Override
-    protected void onCreate(Bundle savedInstanceState){
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.creat_user);
+    public ViewHolder onCreateViewMoldel (@Override ViewGroup parent, int viewType){
 
-        editNome=findViewById(R.id.nome_completo);
-        editEmail=findViewById(R.id.email);
-        btnSalvar=findViewById(R.id.btnSalvar);
-
-        btnSalvar.setOnClickListener(v -> {
-            String nome = editNome.getText().toString();
-            String email = editEmail.getText().toString();
-
-            if(nome.isEmpty()){
-                MainActivity.listaNomes.add(nome + "(" + email + ")");
-                finish();
-            }
-        });
     }
 }
