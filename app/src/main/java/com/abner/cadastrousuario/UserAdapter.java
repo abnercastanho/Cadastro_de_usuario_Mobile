@@ -41,7 +41,14 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
         //Recupera os dados de lista de acordo com a posição que o android está desenhando agora.
         Strin nome = ListaUsuarios.get(position);
 
-
-
+        //Define o texto no componente visual que esta guardado dentro de 'holder'
+        holder.tvNome.setNext(nome);
     }
+
+    //Metodo 3: Informa ao Android quandtos itens a lista possui ao todo
+    publi int getItemCount(){
+        //Se a lista existir, retorna o tamanho, se nao, retorna zero
+        return ListaUsuarios != null ? ListaUsuarios.size():0;
+    }
+
 }
