@@ -1,7 +1,11 @@
 package com.abner.cadastrousuario;
 
+import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
+import androidx.lifecycle.ViewModel;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.jetbrains.annotations.NotNull;
@@ -19,10 +23,15 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
         this.ListaUsuarios = lista;
     }
 
-    //Metodo 1: Cria "do zero" o visual de uma linha da lista (+ViewMoldel)
-    @NotNull
+    //Metodo 1: Cria "do zero" o visual de uma linha da lista (+ViewHolder)
+    @NonNull
     @Override
-    public ViewHolder onCreateViewMoldel (@Override ViewGroup parent, int viewType){
+    public ViewHolder onCreateViewMoldel (@NonNull ViewGroup parent, int viewType){
+        //LayoutInflater transforma o arquivo XML em um objeto view java
+        //Aqui usamos um layout padrao do android (simple_list_item_1) para facilitar.
+        View view = LayoutInflater.from(parent.getContext()).inflate(android.R.layout.simple_list_item_1, parent, false);
 
+        //Retorna uma nova instancia de nossa classe interna ViewMolder com a View Criada
+        return new ViewHolder(view);
     }
 }
