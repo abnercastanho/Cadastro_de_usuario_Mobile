@@ -26,12 +26,22 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
     //Metodo 1: Cria "do zero" o visual de uma linha da lista (+ViewHolder)
     @NonNull
     @Override
-    public ViewHolder onCreateViewMoldel (@NonNull ViewGroup parent, int viewType){
+    public ViewHolder onCreateViewHolder (@NonNull ViewGroup parent, int viewType){
         //LayoutInflater transforma o arquivo XML em um objeto view java
         //Aqui usamos um layout padrao do android (simple_list_item_1) para facilitar.
         View view = LayoutInflater.from(parent.getContext()).inflate(android.R.layout.simple_list_item_1, parent, false);
 
         //Retorna uma nova instancia de nossa classe interna ViewMolder com a View Criada
         return new ViewHolder(view);
+    }
+
+    //Metodo 2: Vincula os dados de um objeto de lista a uma linha especifica da tela
+    @Override
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position){
+        //Recupera os dados de lista de acordo com a posição que o android está desenhando agora.
+        Strin nome = ListaUsuarios.get(position);
+
+
+
     }
 }
