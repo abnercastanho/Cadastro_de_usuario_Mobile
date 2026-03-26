@@ -3,8 +3,10 @@ package com.abner.cadastrousuario;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.view.menu.MenuView;
 import androidx.lifecycle.ViewModel;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -46,9 +48,22 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
     }
 
     //Metodo 3: Informa ao Android quandtos itens a lista possui ao todo
-    publi int getItemCount(){
+    public int getItemCount(){
         //Se a lista existir, retorna o tamanho, se nao, retorna zero
         return ListaUsuarios != null ? ListaUsuarios.size():0;
     }
 
+    //Classe interna ViewHolder: Servir para "segurar" as referências dos componentes de cada linha
+    //Evitar chamadas respectivas ao findViewById, melhorando a performance do RecycleView
+    public class ViewHolder extends RecyclerView.ViewHolder{
+        //Referencia para o TextView da Linha
+        TextView tvNome;
+
+        public ViewHolder(@NonNull View intemView){
+            super(itemView);
+            //Faz o mapeamento do ID do layout para o objeto JAVA
+            //android.R.id.text é o ID padrão do layout 'simple_list_item_1'
+            tvNome = itemView.findViewById(android.R.id.text1);
+        }
+    }
 }
